@@ -77,7 +77,9 @@ public class PhotoActivity extends Activity {
 
     public void onClickPrendrePhoto(View v) {
 
-        nom = eNom.getText().toString();
+        if (nom == null) {
+            nom = eNom.getText().toString();
+        }
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
 
@@ -102,7 +104,14 @@ public class PhotoActivity extends Activity {
     }
 
     public void onClickEnregistrer(View v) {
-        finish();
+        if (photoPrise == null) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Veuillez prendre une photo svp.");
+            builder.setNeutralButton("ok", null);
+            builder.show();
+        } else {
+            finish();
+        }
     }
 
     @Override
