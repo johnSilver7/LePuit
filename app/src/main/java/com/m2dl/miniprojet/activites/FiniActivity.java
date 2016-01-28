@@ -23,8 +23,8 @@ public class FiniActivity extends Activity {
         difficulte = (TextView) findViewById(R.id.activite_fini_difficulte);
         temps = (TextView) findViewById(R.id.activite_fini_temps);
 
-
-        int scoreNumber = JeuActivity.calculerScore(JeuActivity.getScore(), JeuActivity.getDifficulte());
+        int scoreNumber = JeuActivity.calculerScore(JeuActivity.getTemps(),
+                JeuActivity.getDifficulte());
         score.setText(scoreNumber + "");
         temps.setText(JeuActivity.getTemps() + "");
         difficulte.setText(JeuActivity.getDifficulte().toString());
