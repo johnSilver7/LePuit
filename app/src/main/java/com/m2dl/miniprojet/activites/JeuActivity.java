@@ -65,7 +65,6 @@ public class JeuActivity extends Activity implements SensorEventListener {
         longueurEcran = dm.heightPixels;
         marginImageX = largeurEcran / 20;
         marginImageY = longueurEcran / 20;
-        initPhoto();
         initImage();
         initPluieMeteorite();
         initImageBille();
@@ -133,11 +132,6 @@ public class JeuActivity extends Activity implements SensorEventListener {
         imageView.getLayoutParams().width = Point.LARGEUR_PX;
         imageView.getLayoutParams().height = Point.LONGUEUR_PX;
         jouerSonMeteorite();
-    }
-
-    private void initPhoto() {
-    //TODO a modifier
-        photo = Photo.getListePhoto().get(0);
     }
 
     private void initImage() {
