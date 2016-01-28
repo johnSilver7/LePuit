@@ -17,4 +17,13 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:onClick="onClickJouer" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="&lt;test>Acceder au jeu"
+        android:id="@+id/button"
+        android:layout_below="@+id/activity_main_bouton_jouer"
+        android:layout_centerHorizontal="true"
+        android:onClick="onClickTestAccesJeu" />
 </RelativeLayout>

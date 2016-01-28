@@ -38,7 +38,13 @@ public class JeuActivity extends Activity {
         largeurEcran = dm.widthPixels;
         longueurEcran = dm.heightPixels;
 
+        initPhoto();
         initImage();
+    }
+
+    private void initPhoto() {
+        //TODO a modifier
+        photo = Photo.getListePhoto().get(0);
     }
 
     private void initImage() {
@@ -47,9 +53,6 @@ public class JeuActivity extends Activity {
 
         iPhoto.getLayoutParams().width = largeurPhoto;
         iPhoto.getLayoutParams().height = longueurPhoto;
-
-        //TODO a enlever
-        //photo = new Photo();
 
         iPhoto.setImageBitmap(photo.getImage());
     }
