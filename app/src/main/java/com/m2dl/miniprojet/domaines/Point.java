@@ -7,13 +7,15 @@ public class Point {
 
     private int x, y;
     private boolean valide;
+    private int[] pixels;
 
     public static int LARGEUR_PX, LONGUEUR_PX;
 
-    public Point(int x, int y) {
+    public Point(int x, int y, int[] pixels) {
         this.x = x;
         this.y = y;
-        valide = true;
+        this.valide = true;
+        this.pixels = pixels;
     }
 
     public int getObscurite() {
