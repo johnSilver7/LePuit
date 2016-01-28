@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -71,6 +72,7 @@ public class PhotoActivity extends Activity {
         if (imagePhotoPrise == null) {
             tPhoto.setBackgroundDrawable(getResources().getDrawable(R.drawable.camera));
         } else {
+            imagePhotoPrise = BitmapFactory.decodeFile(photoPrise.getAbsolutePath());
             tPhoto.setBackgroundDrawable(new BitmapDrawable(imagePhotoPrise));
         }
     }
@@ -81,7 +83,7 @@ public class PhotoActivity extends Activity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
 
-        if (nom != null) {
+        if (!nom.equals("")) {
             photoPrise = new File(Photo.PATH + nom);
             Uri fileUri = Uri.fromFile(photoPrise);
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -98,12 +100,23 @@ public class PhotoActivity extends Activity {
     public void onClickAnnuler(View v) {
         imagePhotoPrise = null;
         finish();
+
     }
 
     public void onClickEnregistrer(View v) {
 
 
         finish();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUETE_CAPTURE && resultCode == RESULT_OK) {
+            imagePhotoPrise = BitmapFactory.decodeFile(photoPrise.getAbsolutePath());
+            afficherPhoto();
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
 
