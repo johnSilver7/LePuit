@@ -6,6 +6,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.Image;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
@@ -42,7 +43,8 @@ public class JeuActivity extends Activity implements SensorEventListener {
     public static int marginImageX, marginImageY;
     private SensorManager sm;
     private int dYPrev, dYCour, dZPrev, dZCour;
-
+    private MediaPlayer son;
+    private boolean sonIsPlaying = false;
     private Chronometer chronometer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,7 @@ public class JeuActivity extends Activity implements SensorEventListener {
         layoutPere = (RelativeLayout) findViewById(R.id.activity_jeu_layout_pere);
         chronometer = (Chronometer) findViewById(R.id.chronometer1);
         sm = (SensorManager) getSystemService(SENSOR_SERVICE);
+        son = MediaPlayer.create(getBaseContext(), R.raw.musique1);
         // Recuperation des dimensions de l'ecran
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -69,7 +72,7 @@ public class JeuActivity extends Activity implements SensorEventListener {
         dYCour = dYPrev = dZPrev = dZCour = 0;
         startChronometer(null);
         verifPerdu();
-
+        jouerSonMeteorite();
     }
 
     public void startChronometer(View view) {
@@ -79,7 +82,9 @@ public class JeuActivity extends Activity implements SensorEventListener {
     public void stopChronometer(View view) {
         ((Chronometer) findViewById(R.id.chronometer1)).stop();
         String time = chronometer.getText().toString();
-        temps = Integer.parseInt(time);
+        int minutes = Integer.parseInt(time.substring(0, 2));
+        int secondes = Integer.parseInt(time.substring(3));
+        temps = minutes * 60 + secondes;
     }
 
     private void verifPerdu() {
@@ -94,7 +99,7 @@ public class JeuActivity extends Activity implements SensorEventListener {
     private void initImageBille() {
         imageBille = new ImageView(this);
         layoutPere.addView(imageBille);
-        imageBille.setBackgroundDrawable(getResources().getDrawable(R.drawable.grosse_bille));
+        imageBille.setBackgroundDrawable(getResources().getDrawable(R.drawable.bille));
         imageBille.setX(largeurEcran / 2);
         imageBille.setY(largeurEcran / 2);
         imageBille.getLayoutParams().width = Point.LARGEUR_PX;
@@ -119,7 +124,7 @@ public class JeuActivity extends Activity implements SensorEventListener {
     public void faireTomberMeteorite() {
         ImageView imageView = new ImageView(this);
         layoutPere.addView(imageView);
-    //new Meteorite(imageView, getResources().getDrawable(R.drawable.meteorite_2),
+        //new Meteorite(imageView, getResources().getDrawable(R.drawable.meteorite_2),
         // photo.getPointPlusSombre());
         Point pos = photo.getPointPlusSombre();
         imageView.setBackgroundDrawable(getResources().getDrawable(R.drawable.meteorite_2));
@@ -127,6 +132,7 @@ public class JeuActivity extends Activity implements SensorEventListener {
         imageView.setY(marginImageY + 72 + (pos.y * Point.LONGUEUR_PX));
         imageView.getLayoutParams().width = Point.LARGEUR_PX;
         imageView.getLayoutParams().height = Point.LONGUEUR_PX;
+        jouerSonMeteorite();
     }
 
     private void initPhoto() {
@@ -193,9 +199,20 @@ public class JeuActivity extends Activity implements SensorEventListener {
         imageBille.setY(y);
         verifPerdu();
     }
+
+    public void jouerSonMeteorite() {
+        if (sonIsPlaying) {
+            sonIsPlaying = false;
+            son.pause();
+        } else {
+            sonIsPlaying = true;
+            son.start();
+        }
+    }
+
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
-// Rien
+        // Rien
     }
 }
 
