@@ -67,7 +67,8 @@
                     android:onClick="onClickAnnuler"
                     android:text="Annuler"
                     android:background="@drawable/bouton1"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    />
 
             </TableRow>
 
