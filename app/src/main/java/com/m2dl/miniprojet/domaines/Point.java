@@ -32,7 +32,6 @@ public class Point {
             double gray = (grayLevel << 16) + (grayLevel << 8) + grayLevel;
             somme += (gray / (double) (LARGEUR_PX * LONGUEUR_PX));
         }
-        Log.d("obscurite(" + x + ";" + y + ")", "" + somme);
         return (int) somme;
     }
 

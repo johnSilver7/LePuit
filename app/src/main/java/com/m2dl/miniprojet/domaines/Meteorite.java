@@ -22,7 +22,7 @@ public class Meteorite {
     private boolean active = true;
 
     private final static int NB_FOIS = 1000;
-    private final static int TEMPS_ENTRE_MOUVEMENT = 1000;
+    private final static int TEMPS_ENTRE_MOUVEMENT = 100;
 
     public Meteorite(ImageView imageView, Drawable drawable, Point destination) {
         this.imageView = imageView;
