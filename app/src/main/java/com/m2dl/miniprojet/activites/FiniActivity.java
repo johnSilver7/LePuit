@@ -25,8 +25,8 @@ public class FiniActivity extends Activity {
 
 
         int scoreNumber = JeuActivity.calculerScore(JeuActivity.getScore(), JeuActivity.getDifficulte());
-        score.setText(scoreNumber);
-        temps.setText(JeuActivity.getTemps());
+        score.setText(scoreNumber + "");
+        temps.setText(JeuActivity.getTemps() + "");
         difficulte.setText(JeuActivity.getDifficulte().toString());
 
     }
@@ -34,6 +34,8 @@ public class FiniActivity extends Activity {
     public void onClickSortir(View v) {
         startActivity(new Intent(this, MainActivity.class));
     }
+
+
 
 
 }
