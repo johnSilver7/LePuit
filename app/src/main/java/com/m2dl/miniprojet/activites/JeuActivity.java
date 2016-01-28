@@ -195,6 +195,14 @@ public class JeuActivity extends Activity implements SensorEventListener {
             y = longueurEcran - marginImageY - Point.LONGUEUR_PX - 124;
         imageBille.setX(x);
         imageBille.setY(y);
+
+        String time = chronometer.getText().toString();
+        int minutes = Integer.parseInt(time.substring(0, 2));
+        int secondes = Integer.parseInt(time.substring(3));
+        temps = minutes * 60 + secondes;
+        int scoreNumber = calculerScore(temps, difficulte);
+        tScore.setText("Score: " + scoreNumber);
+
         if (!aPerdu) verifPerdu();
     }
 
