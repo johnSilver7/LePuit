@@ -10,6 +10,8 @@ public class Photo {
     private Bitmap image;
     private String nom;
     private Point[] points;
+    public static String PATH = "";
+
 
     private final static int NB_X = 20, NB_Y = 40;
 

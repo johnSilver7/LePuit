@@ -1,6 +1,7 @@
 package com.m2dl.miniprojet.activites;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -12,6 +13,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.m2dl.miniprojet.domaines.Photo;
 
 import java.io.File;
 
@@ -27,6 +30,7 @@ public class PhotoActivity extends Activity {
 
     private TextView tPhoto;
     private EditText eNom;
+
     private final static int REQUETE_CAPTURE = 2;
 
 
@@ -34,6 +38,9 @@ public class PhotoActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo);
+
+        Photo.PATH = getExternalFilesDir(null) + "/";
+
 
         // Met a jour la base de donnees
         // TODO charger la base dans un autre thread
@@ -69,11 +76,35 @@ public class PhotoActivity extends Activity {
     }
 
     public void onClickPrendrePhoto(View v) {
-       // photoPrise = new File(Photo.PATH + Photo.NOM_PHOTO_TEMP);
-        Uri fileUri = Uri.fromFile(photoPrise);
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
-        startActivityForResult(intent, REQUETE_CAPTURE);
+
+        String nom = eNom.getText().toString();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+
+        if (nom != null) {
+            photoPrise = new File(Photo.PATH + nom);
+            Uri fileUri = Uri.fromFile(photoPrise);
+            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
+            startActivityForResult(intent, REQUETE_CAPTURE);
+        } else {
+            builder.setMessage("Veuillez donner un nom à votre niveau avant de prendre une photo");
+            builder.setNeutralButton("ok", null);
+            builder.show();
+        }
+
     }
+
+    public void onClickAnnuler(View v) {
+        imagePhotoPrise = null;
+        finish();
+    }
+
+    public void onClickEnregistrer(View v) {
+
+
+        finish();
+    }
+
 
 }
