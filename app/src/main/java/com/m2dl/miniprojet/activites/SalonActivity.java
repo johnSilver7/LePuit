@@ -56,8 +56,10 @@ public class SalonActivity extends Activity {
     @Override
     public void onResume() {
         super.onResume();
-        afficherInformationPhoto(photo);
-        actualiserBoutons();
+        if (photo != null) {
+            afficherInformationPhoto(photo);
+            actualiserBoutons();
+        }
     }
 
     private void initPhoto() {
