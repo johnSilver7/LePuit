@@ -43,6 +43,13 @@ public class SalonActivity extends Activity {
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        afficherInformationPhoto(photo);
+        actualiserBoutons();
+    }
+
     private void initPhoto() {
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
