@@ -47,6 +47,7 @@ public class JeuActivity extends Activity implements SensorEventListener {
     private boolean sonIsPlaying = false;
     private Chronometer chronometer;
     private static int score;
+    private boolean aPerdu = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +92,7 @@ public class JeuActivity extends Activity implements SensorEventListener {
     private void verifPerdu() {
         boolean perdu = photo.aPerdu((int) imageBille.getX(), (int) imageBille.getY());
         if (perdu) {
+            aPerdu = true;
             stopChronometer(null);
             startActivity(new Intent(this, FiniActivity.class));
             finish();
@@ -193,7 +195,7 @@ public class JeuActivity extends Activity implements SensorEventListener {
             y = longueurEcran - marginImageY - Point.LONGUEUR_PX - 124;
         imageBille.setX(x);
         imageBille.setY(y);
-        verifPerdu();
+        if (!aPerdu) verifPerdu();
     }
 
     public void jouerSonMeteorite() {
