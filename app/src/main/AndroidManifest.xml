@@ -17,14 +17,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FiniActivity"></activity>
-        <activity android:name=".HistoriqueActivity"></activity>
+        <activity
+            android:name=".FiniActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".HistoriqueActivity"
+            android:screenOrientation="portrait">
+        </activity>
         <activity
             android:name=".JeuActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".ParametreActivity"></activity>
-        <activity android:name=".PauseActivity"></activity>
-        <activity android:name=".PhotoActivity"></activity>
-        <activity android:name=".SalonActivity"></activity>
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".ParametreActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".PauseActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".PhotoActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".SalonActivity"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 </manifest>
