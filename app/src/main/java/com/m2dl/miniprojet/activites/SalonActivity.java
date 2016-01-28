@@ -81,7 +81,7 @@ public class SalonActivity extends Activity {
         tPhotoPrise.setBackgroundColor(Color.GRAY);
         tPhotoPrise.setBackgroundDrawable(new BitmapDrawable(photo.getImage()));
         tNumPhoto.setText((Photo.getListePhoto().indexOf(photo) + 1) + "/" + Photo.getListePhoto().size());
-        tNumPhoto.setTextColor(Color.BLUE);
+        tNumPhoto.setTextColor(Color.WHITE);
         actualiserBoutons();
     }
 
