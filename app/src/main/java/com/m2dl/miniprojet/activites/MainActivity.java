@@ -24,6 +24,10 @@ public class MainActivity extends Activity {
         startActivity(new Intent(this, PhotoActivity.class));
     }
 
+    public void onClickTestAccesJeu(View v) {
+        startActivity(new Intent(this, JeuActivity.class));
+    }
+
     @Override
     public void onBackPressed() {
         // rien
