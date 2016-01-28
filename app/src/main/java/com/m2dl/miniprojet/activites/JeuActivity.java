@@ -25,6 +25,8 @@ import com.m2dl.miniprojet.domaines.Photo;
 import com.m2dl.miniprojet.domaines.Point;
 import com.m2dl.miniprojet.domaines.Puit;
 
+import java.util.Random;
+
 /**
  * Created by yan on 28/01/16.
  */
@@ -75,6 +77,7 @@ public class JeuActivity extends Activity implements SensorEventListener {
         startChronometer(null);
         verifPerdu();
         jouerSonMeteorite();
+        initBougeToutSeul();
     }
 
     public void startChronometer(View view) {
@@ -95,6 +98,7 @@ public class JeuActivity extends Activity implements SensorEventListener {
             aPerdu = true;
             stopChronometer(null);
             startActivity(new Intent(this, FiniActivity.class));
+            photo = null;
             finish();
         }
     }
@@ -114,12 +118,14 @@ public class JeuActivity extends Activity implements SensorEventListener {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                JeuActivity.this.faireTomberMeteorite();
-                TEMPS_ENTRE_PLUIE_METEORITE = TEMPS_ENTRE_PLUIE_METEORITE - 1;
-                if (TEMPS_ENTRE_PLUIE_METEORITE < 0) {
-                    TEMPS_ENTRE_PLUIE_METEORITE = 0;
+                if (photo != null) {
+                    JeuActivity.this.faireTomberMeteorite();
+                    TEMPS_ENTRE_PLUIE_METEORITE = TEMPS_ENTRE_PLUIE_METEORITE - 1;
+                    if (TEMPS_ENTRE_PLUIE_METEORITE < 0) {
+                        TEMPS_ENTRE_PLUIE_METEORITE = 0;
+                    }
+                    handler.postDelayed(this, TEMPS_ENTRE_PLUIE_METEORITE);
                 }
-                handler.postDelayed(this, TEMPS_ENTRE_PLUIE_METEORITE);
             }
         }, 3000);
     }
@@ -178,6 +184,36 @@ public class JeuActivity extends Activity implements SensorEventListener {
                 bougerBille();
             }
         }
+    }
+
+    private void initBougeToutSeul() {
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                int degresDecalage = Difficulte.getValeur(difficulte) * 2 ;
+
+                int decaleY = dYCour - new Random().nextInt(degresDecalage);
+                int decaleZ = dZCour - new Random().nextInt(degresDecalage);
+
+                decaleY = (decaleY * longueurEcran) / 90;
+                decaleZ = (decaleZ * largeurEcran) / 90;
+
+                int y = (int) imageBille.getY() - decaleY;
+                int x = (int) imageBille.getX() - decaleZ;
+                if (x < marginImageX) x = marginImageX;
+                if (x > largeurEcran - marginImageX - Point.LARGEUR_PX)
+                    x = largeurEcran - marginImageX - Point.LARGEUR_PX;
+                if (y < marginImageY + 72) y = marginImageY + 72;
+                if (y > longueurEcran - marginImageY - Point.LONGUEUR_PX - 124)
+                    y = longueurEcran - marginImageY - Point.LONGUEUR_PX - 124;
+                imageBille.setX(x);
+                imageBille.setY(y);
+
+                handler.postDelayed(this, 300);
+            }
+        }, 300);
     }
 
     private void bougerBille() {

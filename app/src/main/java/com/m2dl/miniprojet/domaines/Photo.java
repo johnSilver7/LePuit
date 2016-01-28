@@ -95,4 +95,13 @@ public class Photo {
             return false;
         }
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Photo)) {
+            return false;
+        } else {
+            return ((Photo) o).nom.equals(nom);
+        }
+    }
 }
