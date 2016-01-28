@@ -36,4 +36,13 @@ public enum Difficulte {
         return null;
     }
 
+    public static Difficulte getDifficulte(String string) {
+        switch (string) {
+            case "Facile": return FACILE;
+            case "Moyen": return MOYEN;
+            case "Difficile": return DIFFICILE;
+        }
+        return null;
+    }
+
 }

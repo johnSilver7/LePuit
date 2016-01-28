@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.m2dl.miniprojet.domaines.Difficulte;
 import com.m2dl.miniprojet.domaines.Meteorite;
 import com.m2dl.miniprojet.domaines.Photo;
 import com.m2dl.miniprojet.domaines.Point;
@@ -26,6 +27,7 @@ public class JeuActivity extends Activity {
     private int TEMPS_ENTRE_PLUIE_METEORITE = 1000;
 
     private static Photo photo;
+    private static Difficulte difficulte;
 
     private ImageView iPhoto;
     private Button bPause, bQuitter;
@@ -98,6 +100,10 @@ public class JeuActivity extends Activity {
 
     public static void setPhoto(Photo photo) {
         JeuActivity.photo = photo;
+    }
+
+    public static void setDifficulte(Difficulte difficulte) {
+        JeuActivity.difficulte = difficulte;
     }
 
 
