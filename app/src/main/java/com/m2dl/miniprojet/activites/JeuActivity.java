@@ -187,8 +187,8 @@ public class JeuActivity extends Activity implements SensorEventListener {
         if (x > largeurEcran - marginImageX - Point.LARGEUR_PX)
             x = largeurEcran - marginImageX - Point.LARGEUR_PX;
         if (y < marginImageY + 72) y = marginImageY + 72;
-        if (y > longueurEcran - marginImageY - Point.LONGUEUR_PX - 124)
-            y = longueurEcran - marginImageY - Point.LONGUEUR_PX - 124;
+        if (y > longueurEcran - marginImageY - Point.LONGUEUR_PX - 48)
+            y = longueurEcran - marginImageY - Point.LONGUEUR_PX - 48;
         imageBille.setX(x);
         imageBille.setY(y);
         verifPerdu();
