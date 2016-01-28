@@ -18,7 +18,7 @@ import com.m2dl.miniprojet.domaines.Puit;
  */
 public class JeuActivity extends Activity {
 
-    private Photo photo;
+    private static Photo photo;
 
     private ImageView iPhoto;
     private Button bPause, bQuitter;
@@ -72,6 +72,10 @@ public class JeuActivity extends Activity {
         iObscur.setY((longueurEcran / 20) + (pObscur.y * Point.LONGUEUR_PX));
         iObscur.setBackgroundDrawable(getResources().getDrawable(R.drawable.meteorite_1));
         Log.d("pObscur x y", pObscur.x + ";" + pObscur.y);
+    }
+
+    public static void setPhoto(Photo photo) {
+        photo = photo;
     }
 
 

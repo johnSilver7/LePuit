@@ -35,7 +35,7 @@ public class MainActivity extends Activity {
     public void onClickJouer(View v) {
         //startActivity(new Intent(this, SalonActivity.class));
         //startActivity(new Intent(this, JeuActivity.class));
-        startActivity(new Intent(this, PhotoActivity.class));
+        startActivity(new Intent(this, SalonActivity.class));
     }
 
     public void onClickTestAccesJeu(View v) {
