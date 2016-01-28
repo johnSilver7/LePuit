@@ -112,6 +112,7 @@
             android:onClick="onClickSortir"
             android:text="Sortir"
             android:textColor="#ffffff"
+            android:background="@drawable/bouton1"
             />
     </TableLayout>
 
