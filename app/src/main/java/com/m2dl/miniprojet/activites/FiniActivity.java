@@ -24,16 +24,18 @@ public class FiniActivity extends Activity {
         temps = (TextView) findViewById(R.id.activite_fini_temps);
 
 
-        /*int scoreNumber = JeuActivity.calculerScore(JeuActivity.getScore(), JeuActivity.getDifficulte());
+        int scoreNumber = JeuActivity.calculerScore(JeuActivity.getScore(), JeuActivity.getDifficulte());
         score.setText(scoreNumber);
         temps.setText(JeuActivity.getTemps());
-        difficulte.setText(JeuActivity.getDifficulte().toString());*/
+        difficulte.setText(JeuActivity.getDifficulte().toString());
 
     }
 
     public void onClickSortir(View v) {
         startActivity(new Intent(this, MainActivity.class));
     }
+
+
 
 
 }

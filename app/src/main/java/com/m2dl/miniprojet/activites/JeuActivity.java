@@ -36,6 +36,7 @@ public class JeuActivity extends Activity implements SensorEventListener {
     private Button bPause, bQuitter;
     private TextView tScore;
     private static int temps;
+    private static int score;
     private RelativeLayout layoutPere;
     private ImageView imageBille;
     public static int largeurEcran, longueurEcran;
@@ -71,6 +72,11 @@ public class JeuActivity extends Activity implements SensorEventListener {
         verifPerdu();
 
     }
+
+    public static int calculerScore(int temps, Difficulte difficulte) {
+        return temps * 5 * Difficulte.getValeur(difficulte);
+    }
+
 
     public void startChronometer(View view) {
         ((Chronometer) findViewById(R.id.chronometer1)).start();
@@ -193,9 +199,23 @@ public class JeuActivity extends Activity implements SensorEventListener {
         imageBille.setY(y);
         verifPerdu();
     }
+
+    public static int getScore() {
+        return score;
+    }
+
+    public static int getTemps() {
+        return temps;
+    }
+
+    public static Difficulte getDifficulte() {
+        return difficulte;
+    }
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 // Rien
     }
+
+
 }
 
