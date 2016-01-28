@@ -2,6 +2,9 @@ package com.m2dl.miniprojet.domaines;
 
 import android.graphics.Bitmap;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by quentin on 28/01/16.
  */
@@ -12,8 +15,9 @@ public class Photo {
     private Point[] points;
     public static String PATH = "";
 
-
     private final static int NB_X = 20, NB_Y = 40;
+
+    private static List<Photo> listePhoto = new ArrayList<>();
 
     public Photo(String nom, Bitmap image) {
         this.nom = nom;
@@ -43,6 +47,10 @@ public class Photo {
             }
         }
         return pointPlusSombre;
+    }
+
+    public Bitmap getImage() {
+        return image;
     }
 
 }

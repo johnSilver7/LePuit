@@ -14,7 +14,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="Pause"
         android:id="@+id/activity_jeu_bouton_pause"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
@@ -23,7 +23,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="Quitter"
         android:id="@+id/activity_jeu_bouton_quitter"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
+        android:text="Score: &lt;TODO>"
         android:id="@+id/activity_jeu_texte_score"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
