@@ -10,4 +10,15 @@ public class PartieEnregistree {
     private Difficulte difficulte;
     private Photo photo;
 
+    public int getScore() {
+        return score;
+    }
+
+    public int getTemps() {
+        return temps;
+    }
+
+    public Difficulte getDifficulte() {
+        return difficulte;
+    }
 }
