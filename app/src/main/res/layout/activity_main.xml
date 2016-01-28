@@ -17,6 +17,7 @@
         android:id="@+id/activity_main_bouton_jouer"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:onClick="onClickJouer" />
+        android:onClick="onClickJouer"
+        android:background="@drawable/bouton1"/>
 
 </RelativeLayout>
