@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -19,6 +21,8 @@ import com.m2dl.miniprojet.domaines.Photo;
 import com.m2dl.miniprojet.domaines.Point;
 import com.m2dl.miniprojet.domaines.Puit;
 
+import java.util.Timer;
+
 /**
  * Created by yan on 28/01/16.
  */
@@ -28,11 +32,14 @@ public class JeuActivity extends Activity {
 
     private static Photo photo;
     private static Difficulte difficulte;
+    private static int temps;
+    private static int score;
 
     private ImageView iPhoto;
     private Button bPause, bQuitter;
     private TextView tScore;
     private RelativeLayout layoutPere;
+    private Chronometer chronometer;
 
     private int largeurEcran, longueurEcran;
 
@@ -48,6 +55,7 @@ public class JeuActivity extends Activity {
         bQuitter = (Button) findViewById(R.id.activity_jeu_bouton_quitter);
         tScore = (TextView) findViewById(R.id.activity_jeu_texte_score);
         layoutPere = (RelativeLayout) findViewById(R.id.activity_jeu_layout_pere);
+        chronometer = (Chronometer) findViewById(R.id.chronometer1);
 
         // Recuperation des dimensions de l'ecran
         DisplayMetrics dm = new DisplayMetrics();
@@ -61,7 +69,22 @@ public class JeuActivity extends Activity {
         initPhoto();
         initImage();
         initPluieMeteorite();
+        startChronometer(null);
 
+    }
+
+    public void startChronometer(View view) {
+        ((Chronometer) findViewById(R.id.chronometer1)).start();
+    }
+
+    public void stopChronometer(View view) {
+        ((Chronometer) findViewById(R.id.chronometer1)).stop();
+        String time = chronometer.getText().toString();
+        temps = Integer.parseInt(time);
+    }
+
+    public static int calculerScore(int temps, Difficulte difficulte) {
+        return temps * 5 * Difficulte.getValeur(difficulte);
     }
 
     private void initPluieMeteorite() {
@@ -106,5 +129,17 @@ public class JeuActivity extends Activity {
         JeuActivity.difficulte = difficulte;
     }
 
+
+    public static int getScore() {
+        return score;
+    }
+
+    public static int getTemps() {
+        return temps;
+    }
+
+    public static Difficulte getDifficulte() {
+        return difficulte;
+    }
 
 }

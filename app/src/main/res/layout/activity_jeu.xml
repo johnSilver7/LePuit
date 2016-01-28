@@ -21,6 +21,14 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
+    <Chronometer
+        android:id="@+id/chronometer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/activity_jeu_image_photo"
+        android:layout_alignStart="@+id/activity_jeu_image_photo" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

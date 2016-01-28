@@ -19,6 +19,7 @@ public class Photo {
 
     public static int NB_X = 20, NB_Y = 40;
 
+
     private static List<Photo> listePhoto = new ArrayList<>();
 
     public Photo(String nom, Bitmap image) {

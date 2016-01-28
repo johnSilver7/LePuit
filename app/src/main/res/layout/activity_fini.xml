@@ -1,7 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".FiniActivity">
+
+    <TextView
+        android:id="@+id/activite_fini_titre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Partie terminée !"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold" />
+
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/activite_fini_scoreTitre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Score : "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textStyle="bold"
+                android:layout_below="@+id/activite_fini_titre"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="76dp" />
+
+            <TextView
+                android:id="@+id/activite_fini_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textStyle="italic" />
+
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/activite_fini_DifficulteTitre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Difficulté : "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"
+                android:layout_alignLeft="@+id/activite_fini_scoreTitre"
+                android:layout_alignStart="@+id/activite_fini_scoreTitre" />
+
+            <TextView
+                android:id="@+id/activite_fini_difficulte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/activite_fini_titreTemps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Temps : "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textStyle="bold"
+                android:layout_above="@+id/tableLayout"
+                android:layout_alignLeft="@+id/tableLayout"
+                android:layout_alignStart="@+id/tableLayout" />
+
+            <TextView
+                android:id="@+id/activite_fini_temps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textStyle="italic" />
+
+        </TableRow>
+
+        <Button
+            android:id="@+id/activity_fini.sortiButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:onClick="onClickSortir"
+            android:text="Sortir" />
+    </TableLayout>
+
+
+
+
+
+
+
 
 </RelativeLayout>

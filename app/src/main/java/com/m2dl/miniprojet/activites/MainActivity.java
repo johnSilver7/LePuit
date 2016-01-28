@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -29,6 +30,8 @@ public class MainActivity extends Activity {
         Puit.LONGUEUR_PX = dm.heightPixels * 9 / 10;
 
         chargerListePhoto();
+
+
 
     }
 
