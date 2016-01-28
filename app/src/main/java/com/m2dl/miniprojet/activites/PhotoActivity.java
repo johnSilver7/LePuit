@@ -42,8 +42,6 @@ public class PhotoActivity extends Activity {
 
         Photo.PATH = getExternalFilesDir(null) + "/";
 
-
-        // Met a jour la base de donnees
         // TODO charger la base dans un autre thread
         //ServeurService.chargerBaseDeDonnees();
 
@@ -89,6 +87,7 @@ public class PhotoActivity extends Activity {
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
             startActivityForResult(intent, REQUETE_CAPTURE);
+            imagePhotoPrise = BitmapFactory.decodeFile(photoPrise.getAbsolutePath());
             Photo.addListePhoto(new Photo(nom,imagePhotoPrise));
 
         } else {
