@@ -197,13 +197,13 @@ public class JeuActivity extends Activity implements SensorEventListener {
     }
 
     public void jouerSonMeteorite() {
-        if (sonIsPlaying) {
+        /*if (sonIsPlaying) {
             sonIsPlaying = false;
             son.pause();
         } else {
             sonIsPlaying = true;
             son.start();
-        }
+        }*/
     }
 
     @Override
