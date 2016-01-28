@@ -27,6 +27,7 @@ public class PhotoActivity extends Activity {
     private static int largeurEcran, longueurEcran;
     private static File photoPrise;
     private static Bitmap imagePhotoPrise;
+    private static String nom;
     private int largeurPhoto = 0, longueurPhoto = 0;
 
     private TextView tPhoto;
@@ -70,14 +71,13 @@ public class PhotoActivity extends Activity {
         if (imagePhotoPrise == null) {
             tPhoto.setBackgroundDrawable(getResources().getDrawable(R.drawable.camera));
         } else {
-            imagePhotoPrise = BitmapFactory.decodeFile(photoPrise.getAbsolutePath());
             tPhoto.setBackgroundDrawable(new BitmapDrawable(imagePhotoPrise));
         }
     }
 
     public void onClickPrendrePhoto(View v) {
 
-        String nom = eNom.getText().toString();
+        nom = eNom.getText().toString();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
 
@@ -87,9 +87,6 @@ public class PhotoActivity extends Activity {
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
             startActivityForResult(intent, REQUETE_CAPTURE);
-            imagePhotoPrise = BitmapFactory.decodeFile(photoPrise.getAbsolutePath());
-            Photo.addListePhoto(new Photo(nom,imagePhotoPrise));
-
         } else {
             builder.setMessage("Veuillez donner un nom à votre niveau avant de prendre une photo");
             builder.setNeutralButton("ok", null);
@@ -105,8 +102,6 @@ public class PhotoActivity extends Activity {
     }
 
     public void onClickEnregistrer(View v) {
-
-
         finish();
     }
 
@@ -115,6 +110,7 @@ public class PhotoActivity extends Activity {
         if (requestCode == REQUETE_CAPTURE && resultCode == RESULT_OK) {
             imagePhotoPrise = BitmapFactory.decodeFile(photoPrise.getAbsolutePath());
             afficherPhoto();
+            Photo.addListePhoto(new Photo(nom, imagePhotoPrise));
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }

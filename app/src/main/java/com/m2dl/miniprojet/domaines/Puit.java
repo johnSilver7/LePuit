@@ -18,7 +18,6 @@ public class Puit {
     }
 
     public int calculerScore(int temps, Difficulte difficulte) {
-
         return temps * 5 * Difficulte.getValeur(difficulte);
     }
 

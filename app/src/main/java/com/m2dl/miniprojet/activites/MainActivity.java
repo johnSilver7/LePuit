@@ -5,10 +5,13 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 
 
 import com.m2dl.miniprojet.domaines.Photo;
+import com.m2dl.miniprojet.domaines.Point;
+import com.m2dl.miniprojet.domaines.Puit;
 
 import java.io.File;
 
@@ -18,6 +21,12 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Recuperation des dimensions de l'ecran
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        Puit.LARGEUR_PX = dm.widthPixels * 9 / 10;
+        Puit.LONGUEUR_PX = dm.heightPixels * 9 / 10;
 
         chargerListePhoto();
 
