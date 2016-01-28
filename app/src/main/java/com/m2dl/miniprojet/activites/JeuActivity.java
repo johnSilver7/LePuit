@@ -14,7 +14,7 @@ import com.m2dl.miniprojet.domaines.Photo;
  */
 public class JeuActivity extends Activity {
 
-    private Photo photo;
+    private static Photo photo;
 
     private ImageView iPhoto;
     private Button bPause, bQuitter;
@@ -55,6 +55,10 @@ public class JeuActivity extends Activity {
         iPhoto.getLayoutParams().height = longueurPhoto;
 
         iPhoto.setImageBitmap(photo.getImage());
+    }
+
+    public static void setPhoto(Photo photo) {
+        photo = photo;
     }
 
 
