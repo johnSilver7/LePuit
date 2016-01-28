@@ -84,7 +84,7 @@ public class PhotoActivity extends Activity {
 
 
         if (!nom.equals("")) {
-            photoPrise = new File(Photo.PATH + nom);
+            photoPrise = new File(Photo.PATH + nom + ".jpeg");
             Uri fileUri = Uri.fromFile(photoPrise);
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
