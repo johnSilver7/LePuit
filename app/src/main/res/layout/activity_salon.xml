@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fond_ciel_etoile"
     tools:context=".SalonActivity">
 
     <ImageView
@@ -25,26 +26,34 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:onClick="getPhotoSuivante"
-        android:text="Suivante" />
+        android:text="Suivante"
+        android:background="@drawable/bouton1"
+        android:layout_toRightOf="@+id/activite_salon_num_photo"
+        android:layout_toEndOf="@+id/activite_salon_num_photo" />
 
     <Button
         android:id="@+id/activite_salon_photo_precedent"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="getPhotoPrecedente"
+        android:text="Précédent"
+        android:background="@drawable/bouton2"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:onClick="getPhotoPrecedente"
-        android:text="Précédent" />
+        android:layout_toLeftOf="@+id/activite_salon_num_photo"
+        android:layout_toStartOf="@+id/activite_salon_num_photo" />
 
     <TextView
         android:id="@+id/activite_salon_num_photo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_alignBottom="@+id/activite_salon_photo_precedent"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp" />
 
     <Button
         android:id="@+id/activite_salon_jouer"
@@ -57,7 +66,9 @@
         android:onClick="onClickJouer"
         android:text="Jouer"
         android:layout_alignLeft="@+id/activite_salon_photo_suivante"
-        android:layout_alignStart="@+id/activite_salon_photo_suivante" />
+        android:layout_alignStart="@+id/activite_salon_photo_suivante"
+        android:background="@drawable/bouton2"
+        />
 
     <Spinner
         android:layout_width="wrap_content"
@@ -73,11 +84,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onClickNouveauNiveau"
-        android:text="Nouveau niveau"
+        android:text="Nouveau \n niveau"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/activite_salon_num_photo"
-        android:layout_toStartOf="@+id/activite_salon_num_photo" />
+        android:layout_toStartOf="@+id/activite_salon_num_photo"
+        android:background="@drawable/bouton1"/>
 
 </RelativeLayout>

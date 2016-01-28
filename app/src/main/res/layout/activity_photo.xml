@@ -3,13 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fond_ciel_etoile"
     tools:context=".PhotoActivity">
 
     <EditText
         android:id="@+id/activite_photo_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nom du niveau : " />
+        android:hint="Nom du niveau : "
+        android:textColor="#ffffff" />
 
     <TextView
         android:id="@+id/activity_photo_image"
@@ -26,15 +28,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:gravity="center"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/activite_photo_prendreButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="1"
-            android:onClick="onClickPrendrePhoto"
-            android:text="Prendre photo" />
+        android:orientation="vertical"
+        android:id="@+id/linearLayout">
 
         <TableLayout
             android:layout_width="match_parent"
@@ -47,20 +42,31 @@
                 android:gravity="center">
 
                 <Button
-                    android:id="@+id/activity_photo_annulerBouton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:onClick="onClickAnnuler"
-                    android:text="Annuler" />
-
-                <Button
                     android:id="@+id/activity_photo.enregistrerBouton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
                     android:onClick="onClickEnregistrer"
-                    android:text="Enregistrer" />
+                    android:text="Enregistrer"
+                    android:background="@drawable/bouton1"
+                    android:layout_weight="1"/>
+
+                <Button
+                    android:id="@+id/activite_photo_prendreButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onClickPrendrePhoto"
+                    android:text="Prendre \n photo"
+                    android:background="@drawable/bouton1"
+                    android:layout_weight="1"/>
+
+                <Button
+                    android:id="@+id/activity_photo_annulerBouton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onClickAnnuler"
+                    android:text="Annuler"
+                    android:background="@drawable/bouton1"
+                    android:layout_weight="1"/>
 
             </TableRow>
 
