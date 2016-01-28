@@ -7,9 +7,19 @@ import android.graphics.Bitmap;
  */
 public class Puit {
 
-    private Bitmap photo;
+    private Photo photo;
     private Joueur joueur;
 
     public static int LARGEUR_PX, LONGUEUR_PX;
+
+    public Puit(Photo photo, Joueur joueur) {
+        this.photo = photo;
+        this.joueur = joueur;
+    }
+
+    public int calculerScore(int temps, Difficulte difficulte) {
+
+        return temps * 5 * Difficulte.getValeur(difficulte);
+    }
 
 }
