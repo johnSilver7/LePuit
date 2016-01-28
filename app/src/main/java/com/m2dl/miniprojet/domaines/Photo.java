@@ -5,10 +5,9 @@ import android.graphics.Bitmap;
 /**
  * Created by quentin on 28/01/16.
  */
-public class Puit {
+public class Photo {
 
-    private Bitmap photo;
-    private Point[][] points;
-    private Joueur joueur;
+    private Bitmap image;
+    private String nom;
 
 }
