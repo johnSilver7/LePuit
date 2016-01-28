@@ -59,6 +59,15 @@
         android:layout_alignLeft="@+id/activite_salon_photo_suivante"
         android:layout_alignStart="@+id/activite_salon_photo_suivante" />
 
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/activite_salon_spinner_difficulte"
+        android:layout_toRightOf="@+id/activite_salon_nouveau_niveau"
+        android:layout_below="@+id/activite_salon_image"
+        android:layout_alignRight="@+id/activite_salon_num_photo"
+        android:layout_alignEnd="@+id/activite_salon_num_photo" />
+
     <Button
         android:id="@+id/activite_salon_nouveau_niveau"
         android:layout_width="wrap_content"

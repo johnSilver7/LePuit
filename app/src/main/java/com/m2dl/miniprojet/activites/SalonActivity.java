@@ -8,10 +8,13 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.m2dl.miniprojet.domaines.Difficulte;
 import com.m2dl.miniprojet.domaines.Photo;
 
 /**
@@ -23,6 +26,8 @@ public class SalonActivity extends Activity {
     private TextView tNumPhoto;
     private Photo photo;
 
+    private Spinner sDifficulte;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,13 +37,18 @@ public class SalonActivity extends Activity {
         bPhotoPrec = (Button) findViewById(R.id.activite_salon_photo_precedent);
         bPhotoSuiv = (Button) findViewById(R.id.activite_salon_photo_suivante);
         tNumPhoto = (TextView) findViewById(R.id.activite_salon_num_photo);
+        sDifficulte = (Spinner) findViewById(R.id.activite_salon_spinner_difficulte);
 
-        photo = Photo.getListePhoto().get(0);
-
-        initPhoto();
-
-        afficherInformationPhoto(photo);
-        actualiserBoutons();
+        sDifficulte.setAdapter(new ArrayAdapter<>(
+                this, R.layout.spinner_layout, Difficulte.getListeString()));
+        if (Photo.getListePhoto().isEmpty()) {
+            onClickNouveauNiveau(null);
+        } else {
+            photo = Photo.getListePhoto().get(0);
+            initPhoto();
+            afficherInformationPhoto(photo);
+            actualiserBoutons();
+        }
 
 
     }
