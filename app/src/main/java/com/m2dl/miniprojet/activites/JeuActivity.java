@@ -46,6 +46,8 @@ public class JeuActivity extends Activity implements SensorEventListener {
     private MediaPlayer son;
     private boolean sonIsPlaying = false;
     private Chronometer chronometer;
+    private static int score;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -207,6 +209,22 @@ public class JeuActivity extends Activity implements SensorEventListener {
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
         // Rien
+    }
+
+    public static int getScore() {
+        return score;
+    }
+
+    public static int getTemps() {
+        return temps;
+    }
+
+    public static Difficulte getDifficulte() {
+        return difficulte;
+    }
+
+    public static int calculerScore(int temps, Difficulte difficulte) {
+        return temps * 5 * Difficulte.getValeur(difficulte);
     }
 }
 
