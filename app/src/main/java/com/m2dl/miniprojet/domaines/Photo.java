@@ -4,6 +4,8 @@ import android.graphics.Bitmap;
 import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.util.Log;
 
+import com.m2dl.miniprojet.activites.JeuActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +46,14 @@ public class Photo {
     }
 
     public Point getPointPlusSombre() {
-        Point pointPlusSombre = points[0];
+        Point pointPlusSombre = null;
+        for (int i = 0 ; i < NB_X * NB_Y; i++) {
+            if (points[i].isValide()) {
+                pointPlusSombre = points[i];
+                break;
+            }
+        }
+
         for (int j = 0; j < NB_Y; j++) {
             for (int i = 0; i < NB_X; i++) {
                 Point point = points[j * NB_X + i];
@@ -69,6 +78,20 @@ public class Photo {
 
         if (!listePhoto.contains(photo)) {
             listePhoto.add(photo);
+        }
+    }
+
+    public boolean aPerdu(int x, int y) {
+        int xImage = x - JeuActivity.marginImageX;
+        int yImage = y - JeuActivity.marginImageY - 72;
+
+        int x1ImageTab = (xImage * NB_X) / Puit.LARGEUR_PX;
+        int y1ImageTab = (yImage * NB_Y) / Puit.LONGUEUR_PX;
+
+        if (!points[y1ImageTab * NB_X + x1ImageTab].isValide()) {
+            return true;
+        } else {
+            return false;
         }
     }
 
