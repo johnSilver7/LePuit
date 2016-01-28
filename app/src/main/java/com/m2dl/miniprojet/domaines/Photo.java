@@ -1,6 +1,7 @@
 package com.m2dl.miniprojet.domaines;
 
 import android.graphics.Bitmap;
+import android.telephony.PhoneNumberFormattingTextWatcher;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +52,17 @@ public class Photo {
 
     public Bitmap getImage() {
         return image;
+    }
+
+    public static List<Photo> getListePhoto() {
+        return listePhoto;
+    }
+
+    public static void addListePhoto(Photo photo) {
+
+        if (!listePhoto.contains(photo)) {
+            listePhoto.add(photo);
+        }
     }
 
 }

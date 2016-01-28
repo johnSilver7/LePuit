@@ -6,6 +6,10 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 
+import com.m2dl.miniprojet.domaines.Photo;
+
+import java.util.List;
+
 public class MainActivity extends Activity {
 
     @Override

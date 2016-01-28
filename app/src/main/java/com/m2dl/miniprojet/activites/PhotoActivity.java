@@ -89,6 +89,8 @@ public class PhotoActivity extends Activity {
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
             startActivityForResult(intent, REQUETE_CAPTURE);
+            Photo.addListePhoto(new Photo(nom,imagePhotoPrise));
+
         } else {
             builder.setMessage("Veuillez donner un nom à votre niveau avant de prendre une photo");
             builder.setNeutralButton("ok", null);
