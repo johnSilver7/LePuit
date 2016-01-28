@@ -41,6 +41,7 @@ public class SalonActivity extends Activity {
 
         sDifficulte.setAdapter(new ArrayAdapter<>(
                 this, R.layout.spinner_layout, Difficulte.getListeString()));
+
         if (Photo.getListePhoto().isEmpty()) {
             onClickNouveauNiveau(null);
         } else {
@@ -49,7 +50,6 @@ public class SalonActivity extends Activity {
             afficherInformationPhoto(photo);
             actualiserBoutons();
         }
-
 
     }
 
@@ -104,6 +104,9 @@ public class SalonActivity extends Activity {
     }
 
     public void onClickJouer(View v) {
+
+        Difficulte difficulte = Difficulte.getDifficulte((String) sDifficulte.getSelectedItem());
+        JeuActivity.setDifficulte(difficulte);
         JeuActivity.setPhoto(photo);
         startActivity(new Intent(this, JeuActivity.class));
     }
