@@ -10,9 +10,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -33,6 +35,7 @@ public class JeuActivity extends Activity implements SensorEventListener {
     private ImageView iPhoto;
     private Button bPause, bQuitter;
     private TextView tScore;
+    private static int temps;
     private RelativeLayout layoutPere;
     private ImageView imageBille;
     public static int largeurEcran, longueurEcran;
@@ -40,6 +43,7 @@ public class JeuActivity extends Activity implements SensorEventListener {
     private SensorManager sm;
     private int dYPrev, dYCour, dZPrev, dZCour;
 
+    private Chronometer chronometer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +53,7 @@ public class JeuActivity extends Activity implements SensorEventListener {
         bQuitter = (Button) findViewById(R.id.activity_jeu_bouton_quitter);
         tScore = (TextView) findViewById(R.id.activity_jeu_texte_score);
         layoutPere = (RelativeLayout) findViewById(R.id.activity_jeu_layout_pere);
+        chronometer = (Chronometer) findViewById(R.id.chronometer1);
         sm = (SensorManager) getSystemService(SENSOR_SERVICE);
         // Recuperation des dimensions de l'ecran
         DisplayMetrics dm = new DisplayMetrics();
@@ -62,12 +67,25 @@ public class JeuActivity extends Activity implements SensorEventListener {
         initPluieMeteorite();
         initImageBille();
         dYCour = dYPrev = dZPrev = dZCour = 0;
+        startChronometer(null);
         verifPerdu();
+
+    }
+
+    public void startChronometer(View view) {
+        ((Chronometer) findViewById(R.id.chronometer1)).start();
+    }
+
+    public void stopChronometer(View view) {
+        ((Chronometer) findViewById(R.id.chronometer1)).stop();
+        String time = chronometer.getText().toString();
+        temps = Integer.parseInt(time);
     }
 
     private void verifPerdu() {
         boolean perdu = photo.aPerdu((int) imageBille.getX(), (int) imageBille.getY());
         if (perdu) {
+            stopChronometer(null);
             startActivity(new Intent(this, FiniActivity.class));
             finish();
         }
