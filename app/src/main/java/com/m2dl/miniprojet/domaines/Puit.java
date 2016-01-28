@@ -8,7 +8,8 @@ import android.graphics.Bitmap;
 public class Puit {
 
     private Bitmap photo;
-    private Point[][] points;
     private Joueur joueur;
+
+    public static int LARGEUR_PX, LONGUEUR_PX;
 
 }
