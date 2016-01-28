@@ -48,11 +48,12 @@ public class Photo {
         for (int j = 0; j < NB_Y; j++) {
             for (int i = 0; i < NB_X; i++) {
                 Point point = points[j * NB_X + i];
-                if (point.isValide() && point.getObscurite() > pointPlusSombre.getObscurite()) {
+                if (point.isValide() && point.getObscurite() < pointPlusSombre.getObscurite()) {
                     pointPlusSombre = point;
                 }
             }
         }
+        pointPlusSombre.setValide(false);
         return pointPlusSombre;
     }
 

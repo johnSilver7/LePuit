@@ -40,4 +40,8 @@ public class Point {
         return valide;
     }
 
+    public void setValide(boolean valide) {
+        this.valide = valide;
+    }
+
 }

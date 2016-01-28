@@ -1,14 +1,19 @@
 package com.m2dl.miniprojet.activites;
 
 import android.app.Activity;
+import android.media.Image;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.m2dl.miniprojet.domaines.Meteorite;
 import com.m2dl.miniprojet.domaines.Photo;
 import com.m2dl.miniprojet.domaines.Point;
 import com.m2dl.miniprojet.domaines.Puit;
@@ -18,6 +23,8 @@ import com.m2dl.miniprojet.domaines.Puit;
  */
 public class JeuActivity extends Activity {
 
+    private int TEMPS_ENTRE_PLUIE_METEORITE = 1000;
+
     private static Photo photo;
 
     private ImageView iPhoto;
@@ -26,6 +33,8 @@ public class JeuActivity extends Activity {
     private RelativeLayout layoutPere;
 
     private int largeurEcran, longueurEcran;
+
+    public static int marginImageX, marginImageY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +53,32 @@ public class JeuActivity extends Activity {
         largeurEcran = dm.widthPixels;
         longueurEcran = dm.heightPixels;
 
+        marginImageX = largeurEcran / 20;
+        marginImageY = longueurEcran / 20;
+
         initPhoto();
         initImage();
+        initPluieMeteorite();
+
+    }
+
+    private void initPluieMeteorite() {
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                JeuActivity.this.faireTomberMeteorite();
+                handler.postDelayed(this, TEMPS_ENTRE_PLUIE_METEORITE =
+                        TEMPS_ENTRE_PLUIE_METEORITE - 1);
+            }
+        }, 3000);
+    }
+
+    public void faireTomberMeteorite() {
+        ImageView imageView = new ImageView(this);
+        layoutPere.addView(imageView);
+        new Meteorite(imageView, getResources().getDrawable(R.drawable.meteorite_2),
+                photo.getPointPlusSombre());
     }
 
     private void initPhoto() {
@@ -61,21 +94,10 @@ public class JeuActivity extends Activity {
         iPhoto.getLayoutParams().height = longueurPhoto;
 
         iPhoto.setImageBitmap(photo.getImage());
-
-        // test obscurite
-        Point pObscur = photo.getPointPlusSombre();
-        ImageView iObscur = new ImageView(this);
-        layoutPere.addView(iObscur);
-        iObscur.getLayoutParams().width = Point.LARGEUR_PX;
-        iObscur.getLayoutParams().height = Point.LONGUEUR_PX;
-        iObscur.setX((largeurEcran / 20) + (pObscur.x * Point.LARGEUR_PX));
-        iObscur.setY((longueurEcran / 20) + (pObscur.y * Point.LONGUEUR_PX));
-        iObscur.setBackgroundDrawable(getResources().getDrawable(R.drawable.meteorite_1));
-        Log.d("pObscur x y", pObscur.x + ";" + pObscur.y);
     }
 
     public static void setPhoto(Photo photo) {
-        photo = photo;
+        JeuActivity.photo = photo;
     }
 
 
